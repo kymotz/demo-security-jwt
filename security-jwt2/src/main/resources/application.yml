@@ -1,0 +1,22 @@
+server:
+  port: 80
+spring:
+  datasource:
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    url: jdbc:mysql://:3306/jwt_security_db?serverTimezone=UTC
+    username: root
+    password: 123456
+  jpa:
+    hibernate:
+      ddl-auto: update
+    show-sql: true
+
+#  token配置
+token:
+  #  令牌自定义标识
+  header: Authorization
+  #  令牌秘钥
+  #	secret:  abcdefghijklmnopqrstuvwxyz  任意字符
+  secret: askdhfkjahskjdfhkalsjhdf^112asdfasdf44^%$_@+asdfasdfaskjdhfkjashdfljkahsdklsfjasgdkjfgjahs(IS:)_@@+asdfasdfaskjdhfkjashdfljkahsdklsfja@+asdfasdfaskjdhfkjashdfljkahsdklsfjasgdkjfgjahssgdkjfgjahsdgfjhgsdfsadf+-asdfasdas+as++_sdfsdsasdfasdf
+  #   令牌有效期（默认30分钟）
+  expireTime:  3600000
