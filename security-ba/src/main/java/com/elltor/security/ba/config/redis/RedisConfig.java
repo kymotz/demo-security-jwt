@@ -7,10 +7,6 @@ import org.springframework.data.redis.core.RedisTemplate;
 import org.springframework.data.redis.serializer.JdkSerializationRedisSerializer;
 import org.springframework.data.redis.serializer.StringRedisSerializer;
 
-/**
- * @author <a href="kim:username?username=liuqichun03">刘启春(liuqichun03)</a>
- * @since 2022/7/29
- */
 @Configuration
 public class RedisConfig {
 

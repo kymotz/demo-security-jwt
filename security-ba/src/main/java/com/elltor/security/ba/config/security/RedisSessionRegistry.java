@@ -14,10 +14,6 @@ import java.util.*;
 import java.util.concurrent.CopyOnWriteArraySet;
 import java.util.concurrent.TimeUnit;
 
-/**
- * @author <a href="kim:username?username=liuqichun03">刘启春(liuqichun03)</a>
- * @since 2022/7/29
- */
 @Slf4j
 @Component
 public class RedisSessionRegistry implements SessionRegistry {

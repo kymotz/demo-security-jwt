@@ -12,10 +12,6 @@ import java.util.Map;
 import java.util.Set;
 import java.util.concurrent.TimeUnit;
 
-/**
- * @author <a href="kim:username?username=liuqichun03">刘启春(liuqichun03)</a>
- * @since 2022/7/29
- */
 @SpringBootTest
 public class RedisTemplateTests {
 

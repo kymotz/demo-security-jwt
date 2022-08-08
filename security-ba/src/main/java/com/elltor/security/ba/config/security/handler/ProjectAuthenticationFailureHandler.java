@@ -11,9 +11,6 @@ import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 import java.io.PrintWriter;
 
-/**
- * @author liuqichun
- */
 @Component
 public class ProjectAuthenticationFailureHandler implements AuthenticationFailureHandler {
     @Override

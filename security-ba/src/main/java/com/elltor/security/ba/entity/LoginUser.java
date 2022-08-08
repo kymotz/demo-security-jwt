@@ -13,10 +13,6 @@ import java.util.List;
 import java.util.Set;
 import java.util.stream.Collectors;
 
-/**
- * @author <a href="kim:username?username=liuqichun03">刘启春(liuqichun03)</a>
- * @since 2022/7/29
- */
 @NoArgsConstructor
 public class LoginUser implements UserDetails {
 
