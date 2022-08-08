@@ -2,7 +2,6 @@ package com.elltor.security.ba.entity;
 
 import lombok.Data;
 
-// jpa 相关都导入 javax.persistence.包下的
 import javax.persistence.*;
 import java.io.Serializable;
 

@@ -2,9 +2,7 @@ package com.elltor.security.ba.service.impl;
 
 import com.elltor.security.ba.entity.LoginUser;
 import com.elltor.security.ba.entity.User;
-
 import com.elltor.security.ba.service.UserService;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsPasswordService;
 import org.springframework.security.core.userdetails.UserDetailsService;

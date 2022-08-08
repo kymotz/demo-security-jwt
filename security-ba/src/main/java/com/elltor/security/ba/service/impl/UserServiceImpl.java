@@ -1,7 +1,7 @@
 package com.elltor.security.ba.service.impl;
 
-import com.elltor.security.ba.repo.UserRepository;
 import com.elltor.security.ba.entity.User;
+import com.elltor.security.ba.repo.UserRepository;
 import com.elltor.security.ba.service.UserService;
 import org.springframework.data.domain.Example;
 import org.springframework.stereotype.Service;

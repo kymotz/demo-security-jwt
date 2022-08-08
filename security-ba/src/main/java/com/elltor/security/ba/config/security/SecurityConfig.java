@@ -1,8 +1,8 @@
 package com.elltor.security.ba.config.security;
 
-import com.elltor.security.ba.service.impl.UserDetailsServiceImpl;
 import com.elltor.security.ba.config.security.handler.ProjectAuthenticationFailureHandler;
 import com.elltor.security.ba.config.security.handler.ProjectAuthenticationSuccessHandler;
+import com.elltor.security.ba.service.impl.UserDetailsServiceImpl;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.security.authentication.dao.DaoAuthenticationProvider;
