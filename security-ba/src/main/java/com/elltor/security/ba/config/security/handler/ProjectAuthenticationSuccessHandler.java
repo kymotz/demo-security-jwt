@@ -1,5 +1,6 @@
-package com.elltor.security_jwt.config.security.handler;
+package com.elltor.security.ba.config.security.handler;
 
+import com.elltor.security.ba.util.Result;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.web.authentication.AuthenticationSuccessHandler;
 import org.springframework.stereotype.Component;
@@ -11,11 +12,12 @@ import java.io.IOException;
 import java.io.PrintWriter;
 
 @Component
-public class MyAuthenticationSuccessHandler implements AuthenticationSuccessHandler {
+public class ProjectAuthenticationSuccessHandler implements AuthenticationSuccessHandler {
     @Override
     public void onAuthenticationSuccess(HttpServletRequest httpServletRequest, HttpServletResponse httpServletResponse, Authentication authentication) throws IOException, ServletException {
         httpServletResponse.setContentType("application/json;charset=utf-8");
-        PrintWriter out = httpServletResponse.getWriter();
-        out.write("{\"code\":\"20001\",\"msg\":\"登录成功\"}");
+        PrintWriter writer = httpServletResponse.getWriter();
+        writer.write(new Result(20001, "登陆成功", null).toJsonString());
+        writer.flush();
     }
 }

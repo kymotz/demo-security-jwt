@@ -1,12 +1,19 @@
 server:
-  port: 80
+  port: 8000
 spring:
   datasource:
     driver-class-name: com.mysql.cj.jdbc.Driver
-    url: jdbc:mysql://:3306/jwt_security_db?serverTimezone=UTC
+    url: jdbc:mysql://ee-liuqichun03-01.dev.kwaidc.com:3306/security_test?serverTimezone=UTC&useSSL=false&useUnicode=true&characterEncoding=utf8
     username: root
     password: 123456
   jpa:
     hibernate:
       ddl-auto: update
     show-sql: true
+    # 将默认的存储引擎切换为 InnoDB 用的
+    database-platform: org.hibernate.dialect.MySQL5InnoDBDialect
+  redis:
+    host: ee-liuqichun03-01.dev.kwaidc.com
+    password: 123456
+    port: 6379
+    database: 0

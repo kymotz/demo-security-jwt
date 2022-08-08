@@ -1,4 +1,4 @@
-package com.elltor.security_jwt.controller;
+package com.elltor.security.ba.controller;
 
 
 import org.springframework.stereotype.Controller;
@@ -36,8 +36,5 @@ public class HomeController {
     public String orderList(){
         return "order";
     }
-
-
-
 
 }

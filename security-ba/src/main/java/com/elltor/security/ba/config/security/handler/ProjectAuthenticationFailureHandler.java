@@ -1,5 +1,6 @@
-package com.elltor.security_jwt.config.security.handler;
+package com.elltor.security.ba.config.security.handler;
 
+import com.elltor.security.ba.util.Result;
 import org.springframework.security.core.AuthenticationException;
 import org.springframework.security.web.authentication.AuthenticationFailureHandler;
 import org.springframework.stereotype.Component;
@@ -10,12 +11,16 @@ import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 import java.io.PrintWriter;
 
+/**
+ * @author liuqichun
+ */
 @Component
-public class MyAuthencationFailureHandler implements AuthenticationFailureHandler {
+public class ProjectAuthenticationFailureHandler implements AuthenticationFailureHandler {
     @Override
     public void onAuthenticationFailure(HttpServletRequest httpServletRequest, HttpServletResponse httpServletResponse, AuthenticationException e) throws IOException, ServletException {
-        httpServletResponse.setContentType("application/json;charset=utf-8");
-        PrintWriter out = httpServletResponse.getWriter();
-        out.write("{\"code\":\"40001\",\"msg\":\"登录失败\"}");
+        httpServletResponse.setContentType("application/json;charset=UTF-8");
+        PrintWriter writer = httpServletResponse.getWriter();
+        writer.write(new Result(40001, "登陆失败", null).toJsonString());
+        writer.flush();
     }
 }

@@ -9,10 +9,10 @@ SET NAMES utf8mb4;
 SET FOREIGN_KEY_CHECKS = 0;
 
 -- ----------------------------
--- Table structure for users
+-- Table structure for user
 -- ----------------------------
-DROP TABLE IF EXISTS `users`;
-CREATE TABLE `users`  (
+DROP TABLE IF EXISTS `user`;
+CREATE TABLE `user`  (
   `user_id` bigint(20) NOT NULL AUTO_INCREMENT,
   `user_name` varchar(30) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL,
   `password` varchar(100) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NULL DEFAULT NULL,
@@ -22,10 +22,10 @@ CREATE TABLE `users`  (
 ) ENGINE = InnoDB AUTO_INCREMENT = 4 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_general_ci ROW_FORMAT = Dynamic;
 
 -- ----------------------------
--- Records of users
+-- Records of user
 -- ----------------------------
-INSERT INTO `users` VALUES (1, 'admin', '$2a$10$nNQI9Ij1rU5NG9JFLQphweTOteCX6O211Nysrg2V5rRSGDRmRWtm.', '0', 'ROLE_ADMIN,ROLE_USER');
-INSERT INTO `users` VALUES (2, 'user', '$2a$10$nNQI9Ij1rU5NG9JFLQphweTOteCX6O211Nysrg2V5rRSGDRmRWtm.', '0', 'ROLE_USER');
-INSERT INTO `users` VALUES (3, 'alex', '$2a$10$nNQI9Ij1rU5NG9JFLQphweTOteCX6O211Nysrg2V5rRSGDRmRWtm.', '0', 'ROLE_ADMIN,ROLE_USER');
+INSERT INTO `user` VALUES (1, 'admin', '$2a$10$nNQI9Ij1rU5NG9JFLQphweTOteCX6O211Nysrg2V5rRSGDRmRWtm.', '0', 'ROLE_ADMIN,ROLE_USER');
+INSERT INTO `user` VALUES (2, 'user', '$2a$10$nNQI9Ij1rU5NG9JFLQphweTOteCX6O211Nysrg2V5rRSGDRmRWtm.', '0', 'ROLE_USER');
+INSERT INTO `user` VALUES (3, 'alex', '$2a$10$nNQI9Ij1rU5NG9JFLQphweTOteCX6O211Nysrg2V5rRSGDRmRWtm.', '0', 'ROLE_ADMIN,ROLE_USER');
 
 SET FOREIGN_KEY_CHECKS = 1;
