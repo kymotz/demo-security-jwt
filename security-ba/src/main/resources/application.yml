@@ -17,3 +17,6 @@ spring:
     password: 123456
     port: 6379
     database: 0
+  cache:
+    redis:
+      time-to-live: 600000
