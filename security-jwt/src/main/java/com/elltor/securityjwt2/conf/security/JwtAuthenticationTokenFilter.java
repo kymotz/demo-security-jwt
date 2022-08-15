@@ -1,8 +1,6 @@
-package com.elltor.securityjwt2.config.security.jwt;
+package com.elltor.securityjwt2.conf.security;
 
-import antlr.StringUtils;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.core.userdetails.UserDetails;
@@ -10,6 +8,7 @@ import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.stereotype.Component;
 import org.springframework.web.filter.OncePerRequestFilter;
 
+import javax.annotation.Resource;
 import javax.servlet.FilterChain;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
@@ -18,22 +17,22 @@ import java.io.IOException;
 
 
 @Component
-public class JwtAuthTokenFilter extends OncePerRequestFilter {
-    @Autowired
-    private JwtTokenUtils jwtTokenUtils;
+public class JwtAuthenticationTokenFilter extends OncePerRequestFilter {
+    @Resource
+    private JwtTokenHelper jwtTokenHelper;
 
-    @Autowired
+    @Resource
     private UserDetailsService userDetailServiceImpl;
 
     @Override
     protected void doFilterInternal(HttpServletRequest request, HttpServletResponse response, FilterChain filterChain) throws ServletException, IOException {
         //http  请求头中的token
-        String token = request.getHeader(jwtTokenUtils.getHeader());
+        String token = request.getHeader(jwtTokenHelper.getHeader());
         if (token!=null && token.length()>0) {
-            String username = jwtTokenUtils.getUsernameFromToken(token);
+            String username = jwtTokenHelper.getUsernameFromToken(token);
             if (username != null && SecurityContextHolder.getContext().getAuthentication()==null) {
                 UserDetails userDetails = userDetailServiceImpl.loadUserByUsername(username);
-                if (jwtTokenUtils.validateToken(token, userDetails)) {
+                if (jwtTokenHelper.validateToken(token, userDetails)) {
                     //给使用该JWT令牌的用户进行授权
                     UsernamePasswordAuthenticationToken authenticationToken =
                             new UsernamePasswordAuthenticationToken(userDetails, null, userDetails.getAuthorities());

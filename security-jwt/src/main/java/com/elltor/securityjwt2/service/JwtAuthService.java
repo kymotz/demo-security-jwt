@@ -1,7 +1,7 @@
-package com.elltor.securityjwt2.config.security.jwt;
+package com.elltor.securityjwt2.service;
 
-import com.elltor.securityjwt2.entity.Users;
-
+import com.elltor.securityjwt2.conf.security.JwtTokenHelper;
+import com.elltor.securityjwt2.domain.LoginUser;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
@@ -16,7 +16,7 @@ public class JwtAuthService {
     private AuthenticationManager authenticationManager;
 
     @Autowired
-    private JwtTokenUtils jwtTokenUtils;
+    private JwtTokenHelper jwtTokenHelper;
 
     /**
      * 登录认证换取JWT令牌
@@ -35,9 +35,9 @@ public class JwtAuthService {
             throw new RuntimeException("用户名密码错误");
         }
 
-        Users loginUser = (Users) authentication.getPrincipal();
+        LoginUser loginUser = (LoginUser) authentication.getPrincipal();
         // 生成token
-        return jwtTokenUtils.generateToken(loginUser);
+        return jwtTokenHelper.generateToken(loginUser);
 
     }
 

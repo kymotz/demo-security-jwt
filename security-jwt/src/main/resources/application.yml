@@ -3,7 +3,7 @@ server:
 spring:
   datasource:
     driver-class-name: com.mysql.cj.jdbc.Driver
-    url: jdbc:mysql://:3306/jwt_security_db?serverTimezone=UTC
+    url: jdbc:mysql://172.29.84.232:3306/security_jwt?serverTimezone=UTC&useSSL=false&useUnicode=true&characterEncoding=utf8
     username: root
     password: 123456
   jpa:

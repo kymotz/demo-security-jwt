@@ -1,4 +1,4 @@
-package com.elltor.securityjwt2.common;
+package com.elltor.securityjwt2.util;
 
 import java.util.HashMap;
 import java.util.Map;

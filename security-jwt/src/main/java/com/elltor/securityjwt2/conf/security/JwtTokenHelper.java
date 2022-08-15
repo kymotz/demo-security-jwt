@@ -1,10 +1,11 @@
-package com.elltor.securityjwt2.config.security.jwt;
+package com.elltor.securityjwt2.conf.security;
 
 
-import io.jsonwebtoken.*;
+import io.jsonwebtoken.Claims;
+import io.jsonwebtoken.Jwts;
+import io.jsonwebtoken.SignatureAlgorithm;
 import lombok.Data;
 import org.springframework.beans.factory.annotation.Value;
-import org.springframework.security.config.annotation.web.configurers.oauth2.server.resource.OAuth2ResourceServerConfigurer;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.stereotype.Component;
 
@@ -17,7 +18,7 @@ import java.util.Map;
 
 @Data
 @Component
-public class JwtTokenUtils {
+public class JwtTokenHelper {
 
     @Value("${token.secret}")
     private String secret;
@@ -29,7 +30,7 @@ public class JwtTokenUtils {
     private String header;
 
 
-    private static Key KEY = null;
+    private static volatile Key KEY = null;
 
     /**
      * 生成token令牌
@@ -151,7 +152,7 @@ public class JwtTokenUtils {
 
     private Key getKeyInstance() {
         if (KEY == null) {
-            synchronized (JwtTokenUtils.class) {
+            synchronized (JwtTokenHelper.class) {
                 if (KEY == null) {// 双重锁
                     byte[] apiKeySecretBytes = DatatypeConverter.parseBase64Binary(secret);
                     KEY = new SecretKeySpec(apiKeySecretBytes, SignatureAlgorithm.HS256.getJcaName());

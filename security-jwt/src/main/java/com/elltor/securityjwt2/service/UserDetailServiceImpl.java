@@ -1,33 +1,34 @@
-package com.elltor.securityjwt2.service.impl;
+package com.elltor.securityjwt2.service;
 
-import com.elltor.securityjwt2.entity.Users;
-import com.elltor.securityjwt2.service.UserService;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.security.core.authority.AuthorityUtils;
+import com.elltor.securityjwt2.domain.LoginUser;
+import com.elltor.securityjwt2.domain.User;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.stereotype.Service;
 
+import javax.annotation.Resource;
+
 
 @Service
 public class UserDetailServiceImpl implements UserDetailsService {
 
-    @Autowired
+    @Resource
     private UserService userService;
 
     @Override
     public UserDetails loadUserByUsername(String username) throws
             UsernameNotFoundException {
-        Users users = userService.selectUserByUserName(username);
-        if (users == null) {
+        User user = userService.selectUserByUserName(username);
+        if (user == null) {
             throw new UsernameNotFoundException("登录用户：" + username + "不存在");
         }
+        LoginUser loginUser = new LoginUser(user);
         //将数据库的roles解析为UserDetails的权限集
         //AuthorityUtils.commaSeparatedStringToAuthorityList将逗号分隔的字符集转成权限对象列表
-        users.setAuthorities(AuthorityUtils.commaSeparatedStringToAuthorityList(users.getRoles()));
-        return users;
+        return loginUser;
     }
+
 }
 
 
