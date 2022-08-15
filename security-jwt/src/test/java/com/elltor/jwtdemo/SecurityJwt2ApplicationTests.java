@@ -1,4 +1,4 @@
-package com.elltor.securityjwt;
+package com.elltor.jwtdemo;
 
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;

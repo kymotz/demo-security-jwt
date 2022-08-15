@@ -1,4 +1,4 @@
-package com.elltor.securityjwt.controller;
+package com.elltor.jwtdemo.controller;
 
 
 import org.springframework.stereotype.Controller;

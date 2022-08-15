@@ -1,4 +1,4 @@
-package com.elltor.securityjwt.conf.security;
+package com.elltor.jwtdemo.conf.security;
 
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
 import org.springframework.security.core.context.SecurityContextHolder;
@@ -17,6 +17,7 @@ import java.io.IOException;
 
 @Component
 public class JwtAuthenticationTokenFilter extends OncePerRequestFilter {
+
     @Resource
     private JwtTokenHelper jwtTokenHelper;
 
@@ -24,7 +25,9 @@ public class JwtAuthenticationTokenFilter extends OncePerRequestFilter {
     private UserDetailsService userDetailServiceImpl;
 
     @Override
-    protected void doFilterInternal(HttpServletRequest request, HttpServletResponse response, FilterChain filterChain) throws ServletException, IOException {
+    protected void doFilterInternal(HttpServletRequest request, HttpServletResponse response, FilterChain filterChain)
+            throws ServletException, IOException {
+
         //http  请求头中的token
         String token = request.getHeader(jwtTokenHelper.getHeader());
         if (token != null && token.length() > 0) {
@@ -32,9 +35,12 @@ public class JwtAuthenticationTokenFilter extends OncePerRequestFilter {
             if (username != null && SecurityContextHolder.getContext().getAuthentication() == null) {
                 UserDetails userDetails = userDetailServiceImpl.loadUserByUsername(username);
                 if (jwtTokenHelper.validateToken(token, userDetails)) {
+
                     //给使用该JWT令牌的用户进行授权
                     UsernamePasswordAuthenticationToken authenticationToken =
-                            new UsernamePasswordAuthenticationToken(userDetails, null, userDetails.getAuthorities());
+                            new UsernamePasswordAuthenticationToken(userDetails, null,
+                                    userDetails.getAuthorities());
+
                     //设置用户身份授权
                     SecurityContextHolder.getContext().setAuthentication(authenticationToken);
                 }

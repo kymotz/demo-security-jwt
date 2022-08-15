@@ -1,8 +1,8 @@
-package com.elltor.securityjwt.controller;
+package com.elltor.jwtdemo.controller;
 
-import com.elltor.securityjwt.service.JwtAuthenticationService;
-import com.elltor.securityjwt.util.RestResult;
-import com.elltor.securityjwt.domain.LoginDTO;
+import com.elltor.jwtdemo.service.JwtAuthenticationService;
+import com.elltor.jwtdemo.util.RestResult;
+import com.elltor.jwtdemo.domain.LoginDTO;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
@@ -24,7 +24,7 @@ public class LoginController {
         RestResult result = RestResult.newInstance();
         result.setCode(200);
         // 该方法会调用UserDetailsServiceImpl的LoadUserByUsername
-        String token = jwtAuthenticationService.login(login.getUsername(), login.getPassword());
+        String token = jwtAuthenticationService.doAuth4GenerateToken(login.getUsername(), login.getPassword());
         result.put("token", token);
         return result;
     }

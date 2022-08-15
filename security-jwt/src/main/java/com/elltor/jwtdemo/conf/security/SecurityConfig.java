@@ -1,7 +1,6 @@
-package com.elltor.securityjwt.conf.security;
+package com.elltor.jwtdemo.conf.security;
 
-import com.elltor.securityjwt.service.UserDetailServiceImpl;
-import org.springframework.beans.factory.annotation.Autowired;
+import com.elltor.jwtdemo.service.UserDetailServiceImpl;
 import org.springframework.context.annotation.Bean;
 import org.springframework.http.HttpMethod;
 import org.springframework.security.authentication.AuthenticationManager;
@@ -13,13 +12,15 @@ import org.springframework.security.config.http.SessionCreationPolicy;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.web.authentication.UsernamePasswordAuthenticationFilter;
 
+import javax.annotation.Resource;
+
 @EnableWebSecurity
 public class SecurityConfig extends WebSecurityConfigurerAdapter {
 
-    @Autowired
+    @Resource
     private UserDetailServiceImpl myUserDetailsService;
 
-    @Autowired
+    @Resource
     private JwtAuthenticationTokenFilter jwtAuthenticationTokenFilter;
 
     @Override
@@ -48,13 +49,11 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
     @Override
     public void configure(AuthenticationManagerBuilder auth) throws Exception {
         //调用DetailsService完成用户身份验证              设置密码加密方式
-        auth.userDetailsService(myUserDetailsService).passwordEncoder(getBCryptPasswordEncoder());
+        auth.userDetailsService(myUserDetailsService).passwordEncoder(bCryptPasswordEncoder());
     }
 
-
-    // 在通过数据库验证登录的方式中不需要配置此种密码加密方式, 因为已经在JWT配置中指定
     @Bean
-    public BCryptPasswordEncoder getBCryptPasswordEncoder() {
+    public BCryptPasswordEncoder bCryptPasswordEncoder() {
         return new BCryptPasswordEncoder();
     }
 

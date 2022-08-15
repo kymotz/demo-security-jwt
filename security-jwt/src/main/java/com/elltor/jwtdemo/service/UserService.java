@@ -1,17 +1,17 @@
-package com.elltor.securityjwt.service;
+package com.elltor.jwtdemo.service;
 
-import com.elltor.securityjwt.repository.UserRepository;
-import com.elltor.securityjwt.domain.User;
-import org.springframework.beans.factory.annotation.Autowired;
+import com.elltor.jwtdemo.repository.UserRepository;
+import com.elltor.jwtdemo.domain.User;
 import org.springframework.data.domain.Example;
 import org.springframework.stereotype.Service;
 
+import javax.annotation.Resource;
 import java.util.List;
 
 @Service
 public class UserService {
 
-    @Autowired
+    @Resource
     private UserRepository userRepository;
 
     public User selectUserByUserName(String userName) {

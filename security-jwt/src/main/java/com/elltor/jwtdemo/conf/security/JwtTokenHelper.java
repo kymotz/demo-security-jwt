@@ -1,4 +1,4 @@
-package com.elltor.securityjwt.conf.security;
+package com.elltor.jwtdemo.conf.security;
 
 
 import io.jsonwebtoken.Claims;
@@ -93,8 +93,6 @@ public class JwtTokenHelper {
         try {
             Claims claims = getClaimsFromToken(token);
             claims.put("created", new Date());
-
-
             refreshedToken = generateToken(claims);
         } catch (Exception e) {
             refreshedToken = null;
@@ -107,13 +105,10 @@ public class JwtTokenHelper {
      *
      * @param token       令牌
      * @param userDetails 用户
-     * @return 是否有效
      */
     public Boolean validateToken(String token, UserDetails userDetails) {
-
         String username = getUsernameFromToken(token);
-        return (username.equals(userDetails.getUsername()) &&
-                !isTokenExpired(token));
+        return username.equals(userDetails.getUsername()) && !isTokenExpired(token);
     }
 
 
@@ -149,11 +144,11 @@ public class JwtTokenHelper {
         return claims;
     }
 
-
     private Key getKeyInstance() {
+        // DCL (double check lock)
         if (KEY == null) {
             synchronized (JwtTokenHelper.class) {
-                if (KEY == null) {// 双重锁
+                if (KEY == null) {
                     byte[] apiKeySecretBytes = DatatypeConverter.parseBase64Binary(secret);
                     KEY = new SecretKeySpec(apiKeySecretBytes, SignatureAlgorithm.HS256.getJcaName());
                 }
