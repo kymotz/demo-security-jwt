@@ -1,7 +1,7 @@
-package com.elltor.securityjwt2.service;
+package com.elltor.securityjwt.service;
 
-import com.elltor.securityjwt2.domain.LoginUser;
-import com.elltor.securityjwt2.domain.User;
+import com.elltor.securityjwt.domain.LoginUser;
+import com.elltor.securityjwt.domain.User;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;

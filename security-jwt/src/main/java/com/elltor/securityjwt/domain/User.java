@@ -1,4 +1,4 @@
-package com.elltor.securityjwt2.domain;
+package com.elltor.securityjwt.domain;
 
 import lombok.Data;
 

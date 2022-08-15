@@ -1,4 +1,4 @@
-package com.elltor.securityjwt2.util;
+package com.elltor.securityjwt.util;
 
 import java.util.HashMap;
 import java.util.Map;
@@ -27,11 +27,12 @@ public class RestResult {
         return new RestResult();
     }
 
-    public void put(String key, Object data) {
+    public RestResult put(String key, Object data) {
         if (this.data == null) {
             this.data = new HashMap<String, Object>();
         }
         ((Map) this.data).put(key, data);
+        return this;
     }
 
     public String getMsg() {

@@ -1,11 +1,11 @@
-package com.elltor.securityjwt2.controller;
+package com.elltor.securityjwt.controller;
 
 
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
 
 @Controller
-public class HomeController {
+public class SimpleController {
 
     // 登录成功首页
     @GetMapping("/index")

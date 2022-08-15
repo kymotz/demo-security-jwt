@@ -1,19 +1,20 @@
-package com.elltor.securityjwt2.controller;
+package com.elltor.securityjwt.controller;
 
-import com.elltor.securityjwt2.service.JwtAuthService;
-import com.elltor.securityjwt2.util.RestResult;
-import com.elltor.securityjwt2.domain.LoginDTO;
-import org.springframework.beans.factory.annotation.Autowired;
+import com.elltor.securityjwt.service.JwtAuthenticationService;
+import com.elltor.securityjwt.util.RestResult;
+import com.elltor.securityjwt.domain.LoginDTO;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 
+import javax.annotation.Resource;
+
 
 @RestController
-public class JwtLoginController {
+public class LoginController {
 
-    @Autowired
-    private JwtAuthService jwtAuthService;
+    @Resource
+    private JwtAuthenticationService jwtAuthenticationService;
 
     // 这个方法用于在登录后登录验证后返回token
     @PostMapping("/login")
@@ -23,10 +24,9 @@ public class JwtLoginController {
         RestResult result = RestResult.newInstance();
         result.setCode(200);
         // 该方法会调用UserDetailsServiceImpl的LoadUserByUsername
-        String token = jwtAuthService.login(login.getUsername(), login.getPassword());
+        String token = jwtAuthenticationService.login(login.getUsername(), login.getPassword());
         result.put("token", token);
         return result;
     }
-
 
 }

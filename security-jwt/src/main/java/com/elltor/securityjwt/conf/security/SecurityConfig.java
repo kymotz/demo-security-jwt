@@ -1,6 +1,6 @@
-package com.elltor.securityjwt2.conf.security;
+package com.elltor.securityjwt.conf.security;
 
-import com.elltor.securityjwt2.service.UserDetailServiceImpl;
+import com.elltor.securityjwt.service.UserDetailServiceImpl;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.http.HttpMethod;

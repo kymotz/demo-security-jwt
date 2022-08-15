@@ -1,7 +1,7 @@
-package com.elltor.securityjwt2.service;
+package com.elltor.securityjwt.service;
 
-import com.elltor.securityjwt2.conf.security.JwtTokenHelper;
-import com.elltor.securityjwt2.domain.LoginUser;
+import com.elltor.securityjwt.conf.security.JwtTokenHelper;
+import com.elltor.securityjwt.domain.LoginUser;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
@@ -9,7 +9,7 @@ import org.springframework.security.core.Authentication;
 import org.springframework.stereotype.Service;
 
 @Service
-public class JwtAuthService {
+public class JwtAuthenticationService {
 
     // 此处注入的bean在SpringConfig中产生, 如果不在其中声明则注入AuthenticationManager报错
     @Autowired
@@ -20,10 +20,6 @@ public class JwtAuthService {
 
     /**
      * 登录认证换取JWT令牌
-     *
-     * @param username
-     * @param password
-     * @return
      */
     public String login(String username, String password) {
         //用户验证

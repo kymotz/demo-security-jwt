@@ -1,6 +1,5 @@
-package com.elltor.securityjwt2.conf.security;
+package com.elltor.securityjwt.conf.security;
 
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.core.userdetails.UserDetails;

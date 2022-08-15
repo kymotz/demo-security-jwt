@@ -1,4 +1,4 @@
-package com.elltor.securityjwt2.conf.security;
+package com.elltor.securityjwt.conf.security;
 
 
 import io.jsonwebtoken.Claims;
