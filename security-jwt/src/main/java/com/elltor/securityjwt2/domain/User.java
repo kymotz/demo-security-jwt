@@ -8,11 +8,11 @@ import java.io.Serializable;
 @Data
 @Entity
 @Table(
-    name = "user",
-    indexes = {
-        @Index(name = "password_idx", columnList = "password"),
-        @Index(name = "username_idx_unique", columnList = "username", unique = true)
-    }
+        name = "user",
+        indexes = {
+                @Index(name = "password_idx", columnList = "password"),
+                @Index(name = "username_idx_unique", columnList = "username", unique = true)
+        }
 )
 public class User implements Serializable {
 

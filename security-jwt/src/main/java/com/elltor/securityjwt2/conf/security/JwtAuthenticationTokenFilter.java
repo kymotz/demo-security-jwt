@@ -28,9 +28,9 @@ public class JwtAuthenticationTokenFilter extends OncePerRequestFilter {
     protected void doFilterInternal(HttpServletRequest request, HttpServletResponse response, FilterChain filterChain) throws ServletException, IOException {
         //http  请求头中的token
         String token = request.getHeader(jwtTokenHelper.getHeader());
-        if (token!=null && token.length()>0) {
+        if (token != null && token.length() > 0) {
             String username = jwtTokenHelper.getUsernameFromToken(token);
-            if (username != null && SecurityContextHolder.getContext().getAuthentication()==null) {
+            if (username != null && SecurityContextHolder.getContext().getAuthentication() == null) {
                 UserDetails userDetails = userDetailServiceImpl.loadUserByUsername(username);
                 if (jwtTokenHelper.validateToken(token, userDetails)) {
                     //给使用该JWT令牌的用户进行授权

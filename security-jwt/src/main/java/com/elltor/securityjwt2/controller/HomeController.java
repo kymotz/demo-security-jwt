@@ -9,35 +9,33 @@ public class HomeController {
 
     // 登录成功首页
     @GetMapping("/index")
-    public String index(){
+    public String index() {
         return "index";
     }
 
     //用户管理
     @GetMapping("/system/user")
-    public String userList(){
+    public String userList() {
         return "user";
     }
 
     //角色管理
     @GetMapping("/system/role")
-    public String roleList(){
+    public String roleList() {
         return "role";
     }
 
     //菜单管理
     @GetMapping("/system/menu")
-    public String menuList(){
+    public String menuList() {
         return "menu";
     }
 
     //订单管理
     @GetMapping("/order")
-    public String orderList(){
+    public String orderList() {
         return "order";
     }
-
-
 
 
 }

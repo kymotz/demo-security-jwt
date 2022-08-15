@@ -39,7 +39,7 @@ public class JwtTokenHelper {
      * @return 令token牌
      */
     public String generateToken(UserDetails userDetails) {
-        System.out.println("[JwtTokenUtils] generateToken "+userDetails.toString());
+        System.out.println("[JwtTokenUtils] generateToken " + userDetails.toString());
         Map<String, Object> claims = new HashMap<>(2);
         claims.put("sub", userDetails.getUsername());
         claims.put("created", new Date());
@@ -58,7 +58,7 @@ public class JwtTokenHelper {
         String username = null;
         try {
             Claims claims = getClaimsFromToken(token);
-            username = claims.get("sub",String.class);
+            username = claims.get("sub", String.class);
             System.out.println("从令牌中获取用户名:" + username);
         } catch (Exception e) {
             username = null;

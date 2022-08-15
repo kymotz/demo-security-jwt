@@ -5,6 +5,7 @@ import java.util.Map;
 
 /**
  * api 接口返回结果封装
+ *
  * @author lqc
  */
 public class RestResult {
@@ -12,7 +13,7 @@ public class RestResult {
     private int code;
     private Object data;
 
-    public RestResult(){
+    public RestResult() {
 
     }
 
@@ -22,15 +23,15 @@ public class RestResult {
         this.data = data;
     }
 
-    public static RestResult newInstance(){
+    public static RestResult newInstance() {
         return new RestResult();
     }
 
-    public void put(String key,Object data){
-        if(this.data==null) {
-            this.data = new HashMap<String,Object>();
+    public void put(String key, Object data) {
+        if (this.data == null) {
+            this.data = new HashMap<String, Object>();
         }
-        ((Map)this.data).put(key,data);
+        ((Map) this.data).put(key, data);
     }
 
     public String getMsg() {
